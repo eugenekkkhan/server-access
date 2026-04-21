@@ -47,6 +47,7 @@ export const theme: Record<string, React.CSSProperties> = {
   logoutBtn: {
     background: "transparent",
     border: `1px solid ${colors.accent}`,
+    lineHeight: "0.9rem",
     borderRadius: 12,
     color: colors.accent,
     cursor: "pointer",

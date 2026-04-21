@@ -86,8 +86,8 @@ export default function Terminal({ token, onLogout }: Props) {
     <div style={theme.wrapper}>
       <div style={theme.titleBar}>
         <span style={theme.titleText}>dedicated-server</span>
-        <button style={theme.logoutBtn} onClick={onLogout}>
-          Disconnect
+        <button style={theme.logoutBtn} className="btn-logout" onClick={onLogout}>
+          disconnect
         </button>
       </div>
       <div ref={containerRef} style={theme.terminal} />
