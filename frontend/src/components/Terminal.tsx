@@ -21,7 +21,7 @@ export default function Terminal({ token, onLogout }: Props) {
     const term = new XTerm({
       theme: terminalTheme,
       fontSize: 14,
-      fontFamily: '"Cascadia Code", "Fira Code", "Consolas", monospace',
+      fontFamily: '"SpaceMono Nerd Font", monospace',
       cursorBlink: true,
       scrollback: 5000,
     });

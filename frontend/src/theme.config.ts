@@ -43,7 +43,6 @@ export const theme: Record<string, React.CSSProperties> = {
   },
   titleText: {
     color: colors.accent,
-    fontWeight: 600,
   },
   logoutBtn: {
     background: "transparent",
@@ -81,14 +80,13 @@ export const theme: Record<string, React.CSSProperties> = {
   },
   cardTitle: {
     fontSize: "1.6rem",
-    fontWeight: 700,
+    lineHeight: "1.2rem",
     color: colors.accent,
     marginBottom: 4,
   },
   cardSubtitle: {
     fontSize: "0.85rem",
     color: colors.fgMuted,
-    marginBottom: 8,
   },
   inputLabel: {
     fontSize: "0.8rem",
@@ -115,7 +113,6 @@ export const theme: Record<string, React.CSSProperties> = {
     color: colors.fgWhite,
     cursor: "pointer",
     fontSize: "1rem",
-    fontWeight: 600,
     padding: "0.7rem",
   },
 };
