@@ -9,6 +9,7 @@ services:
       HOST_ROOT: /host
     volumes:
       - /:/host:rw
+      - /run/systemd/resolve/resolv.conf:/host/etc/resolv.conf:ro
     expose:
       - "3001"
 
