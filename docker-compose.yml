@@ -6,6 +6,9 @@ services:
       AUTH_USER: ${AUTH_USER:-admin}
       AUTH_PASS: ${AUTH_PASS:-changeme}
       SHELL: /bin/bash
+      HOST_ROOT: /host
+    volumes:
+      - /:/host:rw
     expose:
       - "3001"
 
