@@ -2,6 +2,7 @@ services:
   backend:
     build: ./backend
     restart: unless-stopped
+    network_mode: host
     environment:
       AUTH_USER: ${AUTH_USER:-admin}
       AUTH_PASS: ${AUTH_PASS:-changeme}
@@ -10,13 +11,13 @@ services:
     volumes:
       - /:/host:rw
       - /run/systemd/resolve/resolv.conf:/host/etc/resolv.conf:ro
-    expose:
-      - "3001"
 
   frontend:
     build: ./frontend
     restart: unless-stopped
     ports:
       - "80:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - backend
