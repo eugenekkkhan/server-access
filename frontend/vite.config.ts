@@ -7,6 +7,10 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/auth': 'http://localhost:3001',
+      '/socket.io': {
+        target: 'http://localhost:3001',
+        ws: true,
+      },
     },
   },
 });

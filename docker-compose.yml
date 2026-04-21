@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      AUTH_USER: ${AUTH_USER:-admin}
+      AUTH_PASS: ${AUTH_PASS:-changeme}
+      SHELL: /bin/bash
+    expose:
+      - "3001"
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:80"
+    depends_on:
+      - backend

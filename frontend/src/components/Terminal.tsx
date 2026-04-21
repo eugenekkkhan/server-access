@@ -36,7 +36,8 @@ export default function Terminal({ token, onLogout }: Props) {
     termRef.current = term;
     fitAddonRef.current = fitAddon;
 
-    const socket = io("http://localhost:3001/terminal", {
+    // In production nginx proxies /socket.io/ to the backend; in dev Vite proxies it.
+    const socket = io("/terminal", {
       auth: { token },
     });
 
