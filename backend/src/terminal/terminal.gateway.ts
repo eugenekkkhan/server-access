@@ -37,19 +37,17 @@ export class TerminalGateway implements OnGatewayConnection, OnGatewayDisconnect
     }
 
     const hostRoot = process.env.HOST_ROOT || '';
-    const shell = hostRoot
-      ? `${hostRoot}/bin/bash`
-      : (process.env.SHELL || '/bin/bash');
-    const cwd = hostRoot || process.env.HOME || '/';
+    const [spawnCmd, spawnArgs] = hostRoot
+      ? ['chroot', [hostRoot, '/bin/bash', '-l']]
+      : [process.env.SHELL || '/bin/bash', []];
+    const cwd = '/';
     const env = {
-      ...process.env,
-      HOME: hostRoot ? `${hostRoot}/root` : process.env.HOME,
-      PATH: hostRoot
-        ? `${hostRoot}/usr/local/sbin:${hostRoot}/usr/local/bin:${hostRoot}/usr/sbin:${hostRoot}/usr/bin:${hostRoot}/sbin:${hostRoot}/bin`
-        : process.env.PATH,
+      TERM: 'xterm-256color',
+      HOME: '/root',
+      PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     } as Record<string, string>;
 
-    const ptyProcess = pty.spawn(shell, [], {
+    const ptyProcess = pty.spawn(spawnCmd, spawnArgs, {
       name: 'xterm-256color',
       cols: 80,
       rows: 24,
